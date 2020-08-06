@@ -5,8 +5,8 @@ import com.niewiarowski.chess.pieces.Piece;
 public final class OccupiedTile extends Tile {
     Piece pieceOnTile;
 
-    OccupiedTile(char letterTileCoordinate, int numberTileCoordinate, Piece pieceOnTile) {
-        super(letterTileCoordinate, numberTileCoordinate);
+    OccupiedTile(int numberTileCoordinate, Piece pieceOnTile) {
+        super(numberTileCoordinate);
         this.pieceOnTile = pieceOnTile;
     }
 

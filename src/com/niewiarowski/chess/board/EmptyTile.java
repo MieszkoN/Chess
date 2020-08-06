@@ -3,8 +3,8 @@ package com.niewiarowski.chess.board;
 import com.niewiarowski.chess.pieces.Piece;
 
 public final class EmptyTile extends Tile {
-    EmptyTile(char letterTileCoordinate, int numberTileCoordinate) {
-        super(letterTileCoordinate, numberTileCoordinate);
+    EmptyTile(int numberTileCoordinate) {
+        super(numberTileCoordinate);
     }
 
     @Override
