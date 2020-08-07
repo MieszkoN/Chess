@@ -1,10 +1,7 @@
 package com.niewiarowski.chess.pieces;
 
 import com.niewiarowski.chess.ChessColor;
-import com.niewiarowski.chess.board.Board;
-import com.niewiarowski.chess.board.BoardUtils;
-import com.niewiarowski.chess.board.Move;
-import com.niewiarowski.chess.board.Tile;
+import com.niewiarowski.chess.board.*;
 
 import java.util.*;
 
@@ -33,12 +30,12 @@ public class Knight extends Piece {
                 final Tile candidateDestination = board.getTile(destinationCoordinate);
 
                 if(!candidateDestination.isOccupied()) {
-                    legalMoves.add(new Move());
+                    legalMoves.add(new MajorMove(board, this, destinationCoordinate));
                 } else {
                     final Piece pieceAtDestination = candidateDestination.getPiece();
                     final ChessColor pieceOfChessColor = pieceAtDestination.getPieceOfChessColor();
                     if (this.pieceColor != pieceOfChessColor) {
-                        legalMoves.add(new Move());
+                        legalMoves.add(new AttackingMove(board, this, destinationCoordinate, pieceAtDestination));
                     }
                 }
             }
