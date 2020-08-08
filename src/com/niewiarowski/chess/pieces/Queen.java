@@ -6,10 +6,10 @@ import com.niewiarowski.chess.board.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Rook extends Piece{
-    private final static int [] POSSIBLE_ROOK_MOVES = {-8, -1, 1, 8};
+public class Queen extends Piece {
+    private final static int [] POSSIBLE_QUEEN_MOVES = {-9, -8, -7, -1, 1, 7, 8, 9};
 
-    Rook(int piecePosition, ChessColor pieceColor) {
+    Queen(int piecePosition, ChessColor pieceColor) {
         super(piecePosition, pieceColor);
     }
 
@@ -17,7 +17,7 @@ public class Rook extends Piece{
     public List<Move> getLegalMoves(Board board) {
         final List<Move> legalMoves = new ArrayList<>();
 
-        for(int coordinate: POSSIBLE_ROOK_MOVES) {
+        for(int coordinate: POSSIBLE_QUEEN_MOVES) {
             int destinationCoordinate = this.piecePosition;
 
             while(BoardUtils.isValidCoordinate(destinationCoordinate)) {
@@ -47,10 +47,13 @@ public class Rook extends Piece{
     }
 
     private static boolean isFirstColumn(int currentPosition, int coordinateException) {
-        return BoardUtils.FIRST_COLUMN[currentPosition] && (coordinateException == -1);
+        return BoardUtils.FIRST_COLUMN[currentPosition] && (coordinateException == -9 || coordinateException == -1 || coordinateException == 7);
     }
 
     private static boolean isEighthColumn(int currentPosition, int coordinateException) {
-        return BoardUtils.EIGHTH_COLUMN[currentPosition] && (coordinateException == 1);
+        return BoardUtils.FIRST_COLUMN[currentPosition] && (coordinateException == -7 || coordinateException == 1 || coordinateException == 9);
     }
+
+
+
 }
