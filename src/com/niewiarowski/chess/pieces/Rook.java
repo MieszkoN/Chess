@@ -9,7 +9,7 @@ import java.util.List;
 public class Rook extends Piece{
     private final static int [] POSSIBLE_ROOK_MOVES = {-8, -1, 1, 8};
 
-    Rook(int piecePosition, ChessColor pieceColor) {
+    public Rook(int piecePosition, ChessColor pieceColor) {
         super(piecePosition, pieceColor);
     }
 

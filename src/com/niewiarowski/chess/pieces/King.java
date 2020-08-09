@@ -9,7 +9,7 @@ import java.util.List;
 public class King extends Piece {
     private final static int [] POSSIBLE_KING_MOVES = {-9, -8, -7, -1, 1, 7, 8, 9};
 
-    King(int piecePosition, ChessColor pieceColor) {
+    public King(int piecePosition, ChessColor pieceColor) {
         super(piecePosition, pieceColor);
     }
 

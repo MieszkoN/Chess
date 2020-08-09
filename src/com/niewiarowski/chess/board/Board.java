@@ -1,7 +1,7 @@
 package com.niewiarowski.chess.board;
 
 import com.niewiarowski.chess.ChessColor;
-import com.niewiarowski.chess.pieces.Piece;
+import com.niewiarowski.chess.pieces.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,27 @@ import java.util.Map;
 
 public class Board {
     private final List<Tile> gameBoard;
+    private final List<Piece> whitePieces;
+    private final List<Piece> blackPieces;
+
 
     public Board(final Builder builder) {
         this.gameBoard = createGameBoard(builder);
+        this.whitePieces = getCurrentPieces(this.gameBoard, ChessColor.WHITE);
+        this.blackPieces = getCurrentPieces(this.gameBoard, ChessColor.BLACK);
+    }
+
+    private List<Piece> getCurrentPieces(List<Tile> gb, ChessColor col) {
+        final List<Piece> currentPieces = new ArrayList<>();
+        for(final Tile tile : gb) {
+            if(tile.isOccupied()) {
+                Piece piece = tile.getPiece();
+                if(piece.getPieceOfChessColor() == col) {
+                    currentPieces.add(piece);
+                }
+            }
+        }
+        return currentPieces;
     }
 
     private static List<Tile> createGameBoard(final Builder builder) {
@@ -20,6 +38,42 @@ public class Board {
             tiles.add(Tile.createTile(i, builder.boardConfiguration.get(i)));
         }
         return tiles;
+    }
+
+    public static Board createStandardBoard() {
+        final Builder builder = new Builder();
+        //Black player
+        builder.setPiece(new Rook(0, ChessColor.BLACK));
+        builder.setPiece(new Knight(1, ChessColor.BLACK));
+        builder.setPiece(new Bishop(2, ChessColor.BLACK));
+        builder.setPiece(new Queen(3, ChessColor.BLACK));
+        builder.setPiece(new King(4, ChessColor.BLACK));
+        builder.setPiece(new Bishop(5, ChessColor.BLACK));
+        builder.setPiece(new Knight(6, ChessColor.BLACK));
+        builder.setPiece(new Rook(7, ChessColor.BLACK));
+
+        //Pawns
+        for(int i = 8; i < 16; i++) {
+            builder.setPiece(new Pawn(i, ChessColor.BLACK));
+        }
+
+        //White player
+        //Pawns
+        for(int i = 48; i < 56; i++) {
+            builder.setPiece(new Pawn(i, ChessColor.WHITE));
+        }
+        builder.setPiece(new Rook(56, ChessColor.WHITE));
+        builder.setPiece(new Knight(57, ChessColor.WHITE));
+        builder.setPiece(new Bishop(58, ChessColor.WHITE));
+        builder.setPiece(new Queen(59, ChessColor.WHITE));
+        builder.setPiece(new King(60, ChessColor.WHITE));
+        builder.setPiece(new Bishop(61, ChessColor.WHITE));
+        builder.setPiece(new Knight(62, ChessColor.WHITE));
+        builder.setPiece(new Rook(63, ChessColor.WHITE));
+
+
+        return builder.build();
+
     }
 
     public Tile getTile(final int tileCoordinate) {
