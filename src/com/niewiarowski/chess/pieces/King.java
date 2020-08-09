@@ -10,7 +10,7 @@ public class King extends Piece {
     private final static int [] POSSIBLE_KING_MOVES = {-9, -8, -7, -1, 1, 7, 8, 9};
 
     public King(int piecePosition, ChessColor pieceColor) {
-        super(piecePosition, pieceColor);
+        super(PieceType.KING, piecePosition, pieceColor);
     }
 
     @Override

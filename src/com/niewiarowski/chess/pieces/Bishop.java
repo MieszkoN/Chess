@@ -11,7 +11,7 @@ public class Bishop extends Piece {
     private final static int [] POSSIBLE_BISHOP_MOVES = {-9, -7, 7, 9};
 
     public Bishop(int piecePosition, ChessColor pieceColor) {
-        super(piecePosition, pieceColor);
+        super(PieceType.BISHOP, piecePosition, pieceColor);
     }
 
     @Override

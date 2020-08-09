@@ -2,6 +2,8 @@ package com.niewiarowski.chess.board;
 
 import com.niewiarowski.chess.ChessColor;
 import com.niewiarowski.chess.pieces.*;
+import com.niewiarowski.chess.player.BlackPlayer;
+import com.niewiarowski.chess.player.WhitePlayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +15,9 @@ public class Board {
     private final List<Piece> whitePieces;
     private final List<Piece> blackPieces;
 
+    private final WhitePlayer whitePlayer;
+    private final BlackPlayer blackPlayer;
+
     public Board(final Builder builder) {
         this.gameBoard = createGameBoard(builder);
         this.whitePieces = getCurrentPieces(this.gameBoard, ChessColor.WHITE);
@@ -20,6 +25,10 @@ public class Board {
 
         final List<Move> whiteLegalMoves = getLegalMoves(this.whitePieces);
         final List<Move> blackLegalMoves = getLegalMoves(this.blackPieces);
+
+        this.whitePlayer = new WhitePlayer(this, whiteLegalMoves, blackLegalMoves);
+        this.blackPlayer = new BlackPlayer(this, whiteLegalMoves, blackLegalMoves);
+
     }
 
     @Override
@@ -110,8 +119,16 @@ public class Board {
     public Tile getTile(final int tileCoordinate) {
         return gameBoard.get(tileCoordinate);
     }
-    
-    
+
+    public List<Piece> getWhitePieces() {
+        return this.whitePieces;
+    }
+
+    public List<Piece> getBlackPieces() {
+        return this.blackPieces;
+    }
+
+
     public static class Builder {
         Map<Integer, Piece> boardConfiguration;
         ChessColor nextMoveMaker;

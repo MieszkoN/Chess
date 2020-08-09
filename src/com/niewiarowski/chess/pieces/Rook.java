@@ -10,7 +10,7 @@ public class Rook extends Piece{
     private final static int [] POSSIBLE_ROOK_MOVES = {-8, -1, 1, 8};
 
     public Rook(int piecePosition, ChessColor pieceColor) {
-        super(piecePosition, pieceColor);
+        super(PieceType.ROOK , piecePosition, pieceColor);
     }
 
     @Override

@@ -12,7 +12,7 @@ import java.util.List;
 public class Pawn extends Piece {
     private final static int [] POSSIBLE_PAWN_MOVES = {8, 16, 7, 9};
     public Pawn(int piecePosition, ChessColor pieceColor) {
-        super(piecePosition, pieceColor);
+        super(PieceType.PAWN , piecePosition, pieceColor);
     }
 
     @Override
