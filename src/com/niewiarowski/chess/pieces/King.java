@@ -50,4 +50,9 @@ public class King extends Piece {
     private static boolean isEighthColumn(final int currentPosition, final int coordinateException) {
         return BoardUtils.EIGHTH_COLUMN[currentPosition] && (coordinateException == -7 || coordinateException == 1 || coordinateException == 9);
     }
+
+    @Override
+    public String toString() {
+        return PieceType.KING.toString();
+    }
 }

@@ -11,6 +11,11 @@ public final class OccupiedTile extends Tile {
     }
 
     @Override
+    public String toString() {
+        return getPiece().getPieceOfChessColor().isBlack() ? getPiece().toString().toLowerCase() : getPiece().toString().toUpperCase();
+    }
+
+    @Override
     public boolean isOccupied() {
         return true;
     }

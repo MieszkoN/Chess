@@ -4,6 +4,7 @@ import com.niewiarowski.chess.ChessColor;
 import com.niewiarowski.chess.pieces.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,11 +13,41 @@ public class Board {
     private final List<Piece> whitePieces;
     private final List<Piece> blackPieces;
 
-
     public Board(final Builder builder) {
         this.gameBoard = createGameBoard(builder);
         this.whitePieces = getCurrentPieces(this.gameBoard, ChessColor.WHITE);
         this.blackPieces = getCurrentPieces(this.gameBoard, ChessColor.BLACK);
+
+        final List<Move> whiteLegalMoves = getLegalMoves(this.whitePieces);
+        final List<Move> blackLegalMoves = getLegalMoves(this.blackPieces);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        for(int i = 0; i < 64; i++) {
+            final String tileString = printBoard(this.gameBoard.get(i));
+            builder.append(String.format("%3s", tileString));
+            if((i+1) % 8 == 0) {
+                builder.append("\n");
+            }
+        }
+
+        return builder.toString();
+    }
+
+    private static String printBoard(Tile tile) {
+        return tile.toString();
+    }
+
+
+
+    private List<Move> getLegalMoves(final List<Piece> pieces) {
+        final List <Move> legalMoves = new ArrayList<>();
+        for(final Piece piece : pieces) {
+            legalMoves.addAll(piece.getLegalMoves(this));
+        }
+        return legalMoves;
     }
 
     private List<Piece> getCurrentPieces(List<Tile> gb, ChessColor col) {
@@ -86,7 +117,7 @@ public class Board {
         ChessColor nextMoveMaker;
 
         public Builder() {
-
+            this.boardConfiguration = new HashMap<>();
         }
 
         public Builder setPiece(final Piece piece) {

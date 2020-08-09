@@ -59,4 +59,10 @@ public class Knight extends Piece {
     private static boolean isEighthColumn(final int currentPosition, final int coordinateException) {
         return BoardUtils.EIGHTH_COLUMN[currentPosition] && (coordinateException == -15 || coordinateException == -6 || coordinateException == 10 || coordinateException == 17);
     }
+
+
+    @Override
+    public String toString() {
+        return PieceType.KNIGHT.toString();
+    }
 }

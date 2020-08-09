@@ -54,4 +54,9 @@ public class Bishop extends Piece {
     private static boolean isEighthColumn(int currentPosition, int coordinateException) {
         return BoardUtils.FIRST_COLUMN[currentPosition] && (coordinateException == -7 || coordinateException == 9);
     }
+
+    @Override
+    public String toString() {
+        return PieceType.BISHOP.toString();
+    }
 }

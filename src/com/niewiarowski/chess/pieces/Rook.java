@@ -53,4 +53,9 @@ public class Rook extends Piece{
     private static boolean isEighthColumn(int currentPosition, int coordinateException) {
         return BoardUtils.EIGHTH_COLUMN[currentPosition] && (coordinateException == 1);
     }
+
+    @Override
+    public String toString() {
+        return PieceType.ROOK.toString();
+    }
 }
