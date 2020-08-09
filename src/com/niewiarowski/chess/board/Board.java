@@ -108,7 +108,7 @@ public class Board {
     }
 
     public Tile getTile(final int tileCoordinate) {
-        return null;
+        return gameBoard.get(tileCoordinate);
     }
     
     

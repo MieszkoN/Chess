@@ -25,7 +25,7 @@ public class Pawn extends Piece {
                 continue;
             }
 
-            if(coordinate == 8 && !board.getTile(destinationCoordinate).isOccupied()) {
+           if(coordinate == 8 /*&& !board.getTile(destinationCoordinate).isOccupied()*/) {
                 //TODO more work here
                 legalMoves.add(new MajorMove(board, this, destinationCoordinate));
             } else if(coordinate == 16 && this.isFirstMove() && (BoardUtils.SECOND_ROW[this.piecePosition] && this.getPieceOfChessColor().isBlack() || BoardUtils.SEVENTH_ROW[this.piecePosition] && this.getPieceOfChessColor().isWhite())) {
