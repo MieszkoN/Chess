@@ -9,7 +9,7 @@ import java.util.List;
 
 public class WhitePlayer extends Player {
     public WhitePlayer(Board board, List<Move> whiteLegalMoves, List<Move> blackLegalMoves) {
-        super(board, whiteLegalMoves, blackLegalMoves);
+        super(board, whiteLegalMoves, blackLegalMoves, isCheck);
     }
 
     @Override

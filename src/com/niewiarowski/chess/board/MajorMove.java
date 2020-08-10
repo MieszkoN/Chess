@@ -7,4 +7,9 @@ public final class MajorMove extends Move{
     public MajorMove(Board board, Piece movedPiece, int destination) {
         super(board, movedPiece, destination);
     }
+
+    @Override
+    public Board execute() {
+        return null;
+    }
 }

@@ -19,6 +19,8 @@ public class Board {
     private final WhitePlayer whitePlayer;
     private final BlackPlayer blackPlayer;
 
+    private final Player currentPlayer;
+
     public Board(final Builder builder) {
         this.gameBoard = createGameBoard(builder);
         this.whitePieces = getCurrentPieces(this.gameBoard, ChessColor.WHITE);
@@ -29,7 +31,7 @@ public class Board {
 
         this.whitePlayer = new WhitePlayer(this, whiteLegalMoves, blackLegalMoves);
         this.blackPlayer = new BlackPlayer(this, whiteLegalMoves, blackLegalMoves);
-
+        this.currentPlayer = null;
     }
 
     @Override
@@ -135,6 +137,10 @@ public class Board {
 
     public Player getBlackPlayer() {
         return this.blackPlayer;
+    }
+
+    public Player currentPlayer() {
+        return this.currentPlayer;
     }
 
 
