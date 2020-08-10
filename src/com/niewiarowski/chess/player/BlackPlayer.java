@@ -1,5 +1,6 @@
 package com.niewiarowski.chess.player;
 
+import com.niewiarowski.chess.ChessColor;
 import com.niewiarowski.chess.board.Board;
 import com.niewiarowski.chess.board.Move;
 import com.niewiarowski.chess.pieces.Piece;
@@ -15,4 +16,16 @@ public class BlackPlayer extends Player{
     public List<Piece> getCurrentPieces() {
         return this.board.getBlackPieces();
     }
+
+    @Override
+    public ChessColor getColorOfPlayer() {
+        return ChessColor.BLACK;
+    }
+
+    @Override
+    public Player getOponent() {
+        return this.board.getWhitePlayer();
+    }
+
+
 }

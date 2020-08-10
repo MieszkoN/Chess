@@ -1,5 +1,6 @@
 package com.niewiarowski.chess.player;
 
+import com.niewiarowski.chess.ChessColor;
 import com.niewiarowski.chess.board.Board;
 import com.niewiarowski.chess.board.Move;
 import com.niewiarowski.chess.pieces.King;
@@ -28,7 +29,29 @@ public abstract class Player {
         throw new RuntimeException("There is no king!");
     }
 
+
+    //TODO
+    public boolean isMoveLegal(final Move move) {
+        return this.legalMoves.contains(move);
+    }
+
+    public boolean isCheck() {
+        return false;
+    }
+
+    public boolean isCheckMate() {
+        return false;
+    }
+
+
+    public MoveTransition makeMove(final Move move) {
+
+    }
+
+
     public abstract List<Piece> getCurrentPieces();
+    public abstract ChessColor getColorOfPlayer();
+    public abstract Player getOponent();
 
 
 }

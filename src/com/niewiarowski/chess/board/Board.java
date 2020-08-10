@@ -3,6 +3,7 @@ package com.niewiarowski.chess.board;
 import com.niewiarowski.chess.ChessColor;
 import com.niewiarowski.chess.pieces.*;
 import com.niewiarowski.chess.player.BlackPlayer;
+import com.niewiarowski.chess.player.Player;
 import com.niewiarowski.chess.player.WhitePlayer;
 
 import java.util.ArrayList;
@@ -126,6 +127,14 @@ public class Board {
 
     public List<Piece> getBlackPieces() {
         return this.blackPieces;
+    }
+
+    public Player getWhitePlayer() {
+        return this.whitePlayer;
+    }
+
+    public Player getBlackPlayer() {
+        return this.blackPlayer;
     }
 
 
