@@ -46,6 +46,12 @@ public class Queen extends Piece {
         return legalMoves;
     }
 
+
+    @Override
+    public Piece movePiece(Move move) {
+        return new Queen(move.getDestinationCoordinate(), move.getMovedPiece().getPieceOfChessColor());
+    }
+
     private static boolean isFirstColumn(int currentPosition, int coordinateException) {
         return BoardUtils.FIRST_COLUMN[currentPosition] && (coordinateException == -9 || coordinateException == -1 || coordinateException == 7);
     }

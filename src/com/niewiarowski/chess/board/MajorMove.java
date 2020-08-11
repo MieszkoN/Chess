@@ -10,6 +10,22 @@ public final class MajorMove extends Move{
 
     @Override
     public Board execute() {
-        return null;
+        final Board.Builder builder= new Board.Builder();
+
+        for(Piece piece : this.board.currentPlayer().getCurrentPieces()) {
+            if(!this.movedPiece.equals(piece)) {
+                builder.setPiece(piece);
+            }
+        }
+
+        for(Piece piece : this.board.currentPlayer().getOponent().getCurrentPieces()) {
+            builder.setPiece(piece);
+        }
+
+        builder.setPiece(this.movedPiece.movePiece(this));
+        builder.setMoveMaker(this.board.currentPlayer().getOponent().getColorOfPlayer());
+
+
+        return builder.build();
     }
 }

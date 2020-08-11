@@ -44,6 +44,12 @@ public class Knight extends Piece {
         return legalMoves;
     }
 
+
+    @Override
+    public Piece movePiece(Move move) {
+        return new Knight(move.getDestinationCoordinate(), move.getMovedPiece().getPieceOfChessColor());
+    }
+
     private static boolean isFirstColumn(final int currentPosition, final int coordinateException) {
         return BoardUtils.FIRST_COLUMN[currentPosition] && (coordinateException == -17 || coordinateException == -10 || coordinateException == 6 || coordinateException == 15);
     }
