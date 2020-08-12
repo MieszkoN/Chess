@@ -143,10 +143,18 @@ public class Board {
         return this.currentPlayer;
     }
 
+    public List<Move> getAllLegalMoves() {
+        List<Move> ret = new ArrayList<>();
+        ret.addAll(this.whitePlayer.getLegalMoves());
+        ret.addAll(this.blackPlayer.getLegalMoves());
+        return ret;
+    }
+
 
     public static class Builder {
         Map<Integer, Piece> boardConfiguration;
         ChessColor nextMoveMaker;
+        Pawn enPassantPawn;
 
         public Builder() {
             this.boardConfiguration = new HashMap<>();
@@ -164,6 +172,10 @@ public class Board {
 
         public Board build() {
             return new Board(this);
+        }
+
+        public void setEnPassantPawn(Pawn movedPawn) {
+            this.enPassantPawn = movedPawn;
         }
     }
 }

@@ -12,6 +12,7 @@ public abstract class Piece {
     protected final int piecePosition;
     protected final ChessColor pieceColor;
     protected final boolean isFirstMove;
+    private final int cacheHashCode;
 
     Piece(final PieceType pieceType, final int piecePosition, final ChessColor pieceColor) {
         this.pieceType = pieceType;
@@ -19,6 +20,7 @@ public abstract class Piece {
         this.pieceColor = pieceColor;
         //TODO
         this.isFirstMove = false;
+        this.cacheHashCode = hashCode();
     }
 
     public int getPiecePosition() {
@@ -40,6 +42,30 @@ public abstract class Piece {
     }
 
     public abstract Piece movePiece(Move move);
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj) {
+            return true;
+        }
+        if(!(obj instanceof Piece)) {
+            return false;
+        }
+
+        final Piece other = (Piece) obj;
+
+        return piecePosition == other.getPiecePosition() && pieceType == other.getPieceType() && pieceColor == other.getPieceOfChessColor() && isFirstMove == other.isFirstMove();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = pieceType.hashCode();
+        result = 31 * result * pieceColor.hashCode();
+        result = 31 * result + piecePosition;
+        result = 31 * result + (isFirstMove ? 1 : 0);
+
+        return result;
+    }
 
     public enum PieceType {
 
